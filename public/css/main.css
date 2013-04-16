@@ -1,0 +1,11 @@
+
+.playbook-wrapper{
+	width: 800px;
+	margin: 0 auto;
+	background: #eee;
+	min-height: 900px;
+}
+
+.category-list li{
+	cursor: pointer;
+}
