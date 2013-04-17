@@ -36,7 +36,49 @@ $(function(){
 		//url: '/api/categories'
 	});
 
-	window.Category = new CategoryList();
+	//window.Category = new CategoryList();
+
+	window.AppRouter = Backbone.Router.extend({
+
+		routes: {
+			"categories" : "list",
+			"categories/:id" : "showDetails"
+		},
+
+		initialize: function(){
+			console.log("the router is initiazed");     
+		},
+
+		list: function(){
+			console.log("the category will be listed");
+			var categoryList = new CategoryList();
+			categoryList.fetch({success: function(collection, response, options){
+				new AppView({collection: categoryList});
+			}})
+		},
+
+		showDetails: function(id){
+			var category = new Category({_id: id});
+			category.fetch({success: function(){
+				$('.playbook-wrapper').html(new CategoryDetailView({model: category}).el);
+			}})
+		}
+	})
+
+	window.CategoryDetailView = Backbone.View.extend({
+
+		initialize: function(){
+			this.render();
+		},
+
+		render: function(){
+			var source = document.getElementById('category-detail').innerHTML,
+				template = Handlebars.compile(source);
+			this.el.innerHTML = template(this.model.toJSON());
+			return this;
+		}
+	});
+
 
 	window.CategoryView = Backbone.View.extend({
 
@@ -47,7 +89,9 @@ $(function(){
 		},
 
 		render: function(){
-			this.el.innerHTML = '<a class="category-link">'+this.model.get('name')+'</a>';
+			var source = document.getElementById('category-view').innerHTML,
+				template = Handlebars.compile(source);
+			this.el.innerHTML = template(this.model.toJSON());
 			return this;
 		}
 	});
@@ -59,16 +103,17 @@ $(function(){
 		initialize: function(){
 			console.log("the appview is initialize");
 			_.bindAll(this, 'addOne', 'addAll');
-			Category.bind('add', this.addOne);
-			Category.bind('reset', this.addAll);
-			Category.fetch();
+			this.addAll();
+			//this.collection.bind('add', this.addOne);
+			//this.collection.bind('reset', this.addAll);
+			//Category.fetch();
 		},
 
 		events: {
 			'click #add-new' : 'addNew',
 			'click .cancel-add': 'cancelAdd',
 			'click .submit-add': 'submitAdd',
-			'click .category-list li': 'showList'
+			'click .category-name': 'showList',
 		},
 
 		addNew: function(e){
@@ -101,7 +146,7 @@ $(function(){
 		},
 
 		addAll: function(){
-			Category.each(this.addOne);
+			this.collection.each(this.addOne);
 		},
 
 		showList: function(){
@@ -110,5 +155,6 @@ $(function(){
 		}
 	});
 
-	window.App = new AppView;
+	window.App = new AppRouter();
+	Backbone.history.start();
 });	

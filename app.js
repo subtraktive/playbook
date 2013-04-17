@@ -22,6 +22,7 @@ app.configure(function(){
 });
 
 app.get('/categories', category.findAll);
+app.get('/categories/:id', category.findById);
 
 //app.listen(4000);
 //console.log("Listening on port 4000");

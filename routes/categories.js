@@ -15,6 +15,17 @@ db.open(function(err, db){
 				console.log("the category collection does not exit");
 				populateDB();
 			}
+			else{
+				//clearDB();
+				console.log("whats happening!!!" +collection.find().toArray(function(err, results){
+					if(!err){
+						console.log("the results length after deletingis " +results.length)
+					}
+					else{
+						console.log("oh fuck this")
+					}
+				}));
+			}
 		});
 	}
 });
@@ -25,18 +36,50 @@ exports.findAll = function(req, res){
 			res.send(items);
 		})
 	})
+};
+
+exports.findById = function(req, res){
+	var id = req.params.id;
+	db.collection('categories', function(err, collection){
+		collection.findOne({'_id': new BSON.ObjectID(id)}, function(err, item){
+			res.send(item);
+		})
+	})
 }
 
-var populateDB = function(){
-	var categories = [
+var categories = [
 	{
-		name: 'Animal'
+		name: 'Animals',
+		img: 'animals.jpg',
+		list: [{name: 'Cat', img: 'cat.jpg'}, {name: 'Dog', img: 'dog.jpg'}]
 	},
 	{
-		name: 'Birds'
+		name: 'Birds',
+		img: 'birds.jpg',
+		list: [{name: 'Eagle', img: 'eagle.jpg'}, {name: 'Owl', img: 'owl.jpg'}]
+	},
+	{
+		name: 'Fruits',
+		img: 'fruits.jpg',
+		list: [{name: 'Apple', img: 'apple.jpg'},{name: 'Cherry', img: 'cherry.jpg'}]
 	}];
 
+// var clearDB = function(){
+// 	db.categories.remove();
+// };
+
+var populateDB = function(){
+
+	console.log("populate db is called")
+	
 	db.collection('categories', function(err, collection){
-		collection.insert(categories, {safe:true}, function(err, result){})
+		collection.insert(categories, {safe:true}, function(err, result){
+			if(err){
+				console.log("there was error in inserting")
+			}
+			else{
+				console.log("insertion worked fine " +result)
+			}
+		})
 	})
 };
