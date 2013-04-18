@@ -52,16 +52,26 @@
                         <option value="{{id}}">{{name}}</option>
                     {{/each}}
                 </select>
-                <a href="" class="random-selector">Random</a>
-                <a href="" class="toggle-selector">Toggle</a>
+                <a href="" class="random-selector"></a>
+                <a href="" class="toggle-selector"></a>
             
         </script>
 
         <script type="text/x-handlebars-template" id="category-item-contents">
-            <h5>Showing you: {{name}}</h5>
-            <ul class="category-items">
+            <h3>Showing you: {{name}}</h3>
+            <ul class="category-items clearfix">
                 {{#each list}}
-                    <li>{{name}}</li>
+                    <li>
+                        <div class="wrap-img">
+                            <a class="toggleView" href="">
+                                <img alt="{{name}}" src="img/{{img}}"/>
+                            </a>
+                        </div>
+                        <div class="wrap-name">
+                            <a class="showhide-button" href="">Click to see name</a>
+                            <span class="span-name" style="display:none">{{name}}</span>
+                        </div>
+                    </li>
                 {{/each}}
             </ul>
         </script>
@@ -72,11 +82,15 @@
             <a class="submit-add">Add</a>
     	</script>
 
-        <script type="text/x-handlebars-template" id="category-view">
-            <a href="#categories/{{_id}}" class="category-names">
-                <img src="img/{{img}}" alt="category"/>
-                <h5>{{name}}</h5>
-            </a>
+        <script type="text/x-handlebars-template" id="category-view">      
+            <div class="wrap-img">
+                <a href="#categories/{{_id}}" class="category-names">
+                    <img src="img/{{img}}" alt="{{name}}"/>
+                </a>
+            </div>
+            <div class="wrap-title">
+                <a class="img-title" href="#category/{{_id}}">{{name}}</a>
+            </div>
         </script>
 
         <script type="text/x-handlebars-template" id="category-detail">

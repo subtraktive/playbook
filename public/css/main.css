@@ -1,3 +1,6 @@
+/*================================
+            CSS for Primary Page
+  ================================*/
 
 .playbook-header{
 	min-height: 80px;
@@ -5,12 +8,191 @@
 }
 
 .playbook-wrapper{
-	width: 800px;
+	width: 830px;
 	margin: 0 auto;
 	background: #eee;
 	min-height: 900px;
 }
 
-.category-list li{
-	cursor: pointer;
+.category-list li,
+.selected-category-detail li
+{
+  background: #fff;
+  float: left;
+  height: 140px;
+  list-style: none;
+  margin: 0 15px 75px;
+  text-align: center;
+  width: 170px;
 }
+
+.category-list,
+.selected-category-detail
+{
+  padding: 0;
+  margin: 0 15px 30px;
+}
+
+.wrap-img
+{
+  box-shadow: 3px 3px 10px 0 #333;
+  -moz-box-shadow: 3px 3px 10px 0 #333;
+  -webkit-box-shadow: 3px 3px 10px 0 #333;
+  -moz-transition: all .2s ease-in-out;
+  -webkit-transition: all .2s ease-in-out;
+}
+
+.wrap-img a
+{
+  display: table-cell;
+  height: 140px;
+  width: 170px;
+}
+
+.wrap-img *
+{
+  vertical-align: middle;
+}
+
+.wrap-img:hover
+{
+  box-shadow: 3px 3px 20px 3px #333;
+}
+
+.wrap-title,
+.wrap-name
+{
+  padding-top: 15px;
+  position: relative;
+}
+
+.wrap-title
+{
+  -moz-transition: all .2s ease-in-out;
+  -webkit-transition: all .2s ease-in-out;
+}
+
+.wrap-title>a,
+.wrap-name>a
+{
+  color: #244b43;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.wrap-title>a:hover
+{
+
+}
+
+/*=============================================
+                   SECOND PAGE
+  =============================================*/
+
+.selector-wrapper
+{
+  padding: 30px 30px 0;
+}
+
+.selector-wrapper select
+{
+  float: left;
+  padding: 4px;
+  width: 250px;
+}
+
+.selector-wrapper a.random-selector
+{
+  background: url(../img/random.png) no-repeat;
+  cursor: pointer;
+  float: left;
+  height: 36px;
+  left: 20px;
+  position: relative;
+  top: -3px;
+  width: 111px;
+}
+
+.category-items{
+	padding: 0;
+}
+
+.selector-wrapper a.random-selector:hover
+{
+  background-position: 0 -36px;
+}
+/*#toggle
+{
+  float: right;
+}
+#toggle span
+{
+  color: #3f6e62;
+  vertical-align: middle;
+}*/
+.toggle-selector
+{
+  background: url(../img/switch.png) no-repeat;
+  cursor: pointer;
+  float: right;
+  height: 31px;
+  width: 77px;
+}
+
+.selector-wrapper a.show
+{
+  background-position: 0 -32px;
+}
+
+.selected-category h3,
+.categories h3
+{
+  color: #416c63;
+  font-size: 20px;
+  font-weight: normal;
+  margin: 0 0 25px 15px;
+}
+
+.selected-category h4
+{
+  margin-left: 15px;
+}
+
+.selected-category-detail li
+{
+  list-style: none;
+}
+
+.wrap-name>a
+{
+  background: #244c44;
+  border-radius: 15px;
+  color: #789f8c;
+  display: block;
+  font-size: 14px;
+  padding: 4px 15px;
+  position: relative;
+  width: 140px;
+  z-index: 2;
+}
+
+.wrap-name>a:hover
+{
+  text-shadow: 0 1px #111;
+  -moz-text-shadow: 0 1px #111;
+  -webkit-text-shadow: 0 1px #111;
+}
+
+.span-name
+{
+  color: #24433d;
+  left: 0;
+  position: absolute;
+  top: 18px;
+  width: 170px;
+}
+
+/* util */
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { *zoom: 1; }

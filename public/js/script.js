@@ -62,17 +62,17 @@ $(function(){
 			$('#playbook-contents').html('');
 			categoryList.fetch({success: function(){
 				$('#playbook-contents').append(new CategorySelectorView({collection: categoryList}).el);
+				category.fetch({success: function(){
+					$('#playbook-contents').append( new CategoryDetailView({model: category}).el);
+				}});
 			}})
-			category.fetch({success: function(){
-				//selector.innerHTML = new CategoryDetailView({model: category}).el;
-				$('#playbook-contents').append( new CategoryDetailView({model: category}).el);
-			}})
+			
 		}
 	})
 
 	window.CategorySelectorView = Backbone.View.extend({
 		
-		className: 'selector-wrapper',
+		className: 'selector-wrapper clearfix',
 
 		initialize: function(){
 			this.render();
@@ -103,7 +103,7 @@ $(function(){
 			//console.log("the sleected cat is " +category);
 			category.fetch({success: function(){
 				//selector.innerHTML = new CategoryDetailView({model: category}).el;
-				$('.selected-category-detail').html( new CategoryDetailView({model: category}).el);
+				$('.selected-category-detail').html( new CategoryDetailView({model: category}).el.innerHTML);
 			}})
 		},
 
@@ -114,7 +114,7 @@ $(function(){
 
 	window.CategoryDetailView = Backbone.View.extend({
 
-		className: 'selected-category-detail',
+		className: 'selected-category-detail clearfix',
 
 		initialize: function(){
 			this.render();

@@ -17,6 +17,7 @@ db.open(function(err, db){
 			}
 			else{
 				//clearDB();
+				//populateDB();
 				console.log("whats happening!!!" +collection.find().toArray(function(err, results){
 					if(!err){
 						console.log("the results length after deletingis " +results.length)
@@ -51,18 +52,24 @@ var categories = [
 	{
 		name: 'Animals',
 		img: 'animals.jpg',
-		list: [{name: 'Cat', img: 'cat.jpg'}, {name: 'Dog', img: 'dog.jpg'}]
+		list: [{name: 'Cat', img: 'cat.jpg'}, {name: 'Dog', img: 'dog.jpg'}, {name: 'Zebra', img: 'zebra.jpg'}, {name: 'Rabbit', img: 'rabbit.jpg'}]
 	},
 	{
 		name: 'Birds',
 		img: 'birds.jpg',
-		list: [{name: 'Eagle', img: 'eagle.jpg'}, {name: 'Owl', img: 'owl.jpg'}]
+		list: [{name: 'Eagle', img: 'eagle.jpg'}, {name: 'Owl', img: 'owl.jpg'}, {name: 'Parrot', img: 'parrot.jpg'}, {name: 'Swan', img: 'swan.jpg'}]
 	},
 	{
 		name: 'Fruits',
 		img: 'fruits.jpg',
-		list: [{name: 'Apple', img: 'apple.jpg'},{name: 'Cherry', img: 'cherry.jpg'}]
-	}];
+		list: [{name: 'Apple', img: 'apple.jpg'},{name: 'Cherry', img: 'cherry.jpg'},{name: 'Banana', img: 'banana.jpg'}, {name: 'Strawberry', img: 'strawberry.jpg'}, {name: 'Mango', img: 'mango.jpg'}, {name: 'Orange', img: 'orange.jpg'}, {name: 'Pomegranate', img: 'pomegranate.jpg'}, {name: 'Jackfruit', img: 'jackfruit.jpg'}]
+	},
+	{
+		name: 'Flowers',
+		img: 'flowers.jpg',
+		list: [{name: 'Rose', img: 'rose.jpg'}, {name: 'Tulip', img: 'tulip.jpg'}, {name: 'Hibiscus', img:'hibiscus.jpg'}, {name: 'Sunflower', img: 'sunflower.jpg'}]
+	}
+	];
 
 // var clearDB = function(){
 // 	db.categories.remove();
