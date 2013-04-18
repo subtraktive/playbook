@@ -110,6 +110,8 @@ $(function(){
 		showRandomList: function(){
 			
 		}
+
+		
 	});
 
 	window.CategoryDetailView = Backbone.View.extend({
@@ -122,12 +124,34 @@ $(function(){
 
 		},
 
+		events: {
+			'click .showhide-button' : 'toggleName',
+			'click .toggle-view' : 'toggleName'
+		},
+
 		render: function(){
 			var source = document.getElementById('category-item-contents').innerHTML,
 				template = Handlebars.compile(source);
 			this.el.innerHTML = template(this.model.toJSON());
 			return this;
+		},
+
+		toggleName: function(e){
+			e.preventDefault();
+			var className = e.currentTarget.className,
+			sel1, sel2;
+			if(className == "toggle-view"){
+				sel1 = e.currentTarget.parentElement.nextElementSibling.firstElementChild,
+				sel2 = e.currentTarget.parentElement.nextElementSibling.lastElementChild;
+			}
+			else{
+				sel1 = e.currentTarget,
+				sel2 = e.currentTarget.nextElementSibling;
+			}
+			sel1.style.display = "none";
+			sel2.style.display = "inline";
 		}
+
 	});
 
 

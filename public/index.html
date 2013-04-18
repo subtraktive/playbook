@@ -52,8 +52,8 @@
                         <option value="{{id}}">{{name}}</option>
                     {{/each}}
                 </select>
-                <a href="" class="random-selector"></a>
-                <a href="" class="toggle-selector"></a>
+                <a href="#" class="random-selector"></a>
+                <a href="#" class="toggle-selector"></a>
             
         </script>
 
@@ -63,24 +63,18 @@
                 {{#each list}}
                     <li>
                         <div class="wrap-img">
-                            <a class="toggleView" href="">
+                            <a class="toggle-view" href="#">
                                 <img alt="{{name}}" src="img/{{img}}"/>
                             </a>
                         </div>
                         <div class="wrap-name">
-                            <a class="showhide-button" href="">Click to see name</a>
+                            <a class="showhide-button" href="#">Click to see name</a>
                             <span class="span-name" style="display:none">{{name}}</span>
                         </div>
                     </li>
                 {{/each}}
             </ul>
         </script>
-
-    	<script type="text/x-handlebars-template" id="add-category">
-            <input class="add-category" placeholder="Enter the category name" type="text"/>
-            <a class="cancel-add">Cancel</a>
-            <a class="submit-add">Add</a>
-    	</script>
 
         <script type="text/x-handlebars-template" id="category-view">      
             <div class="wrap-img">
@@ -89,7 +83,7 @@
                 </a>
             </div>
             <div class="wrap-title">
-                <a class="img-title" href="#category/{{_id}}">{{name}}</a>
+                <a class="img-title" href="#categories/{{_id}}">{{name}}</a>
             </div>
         </script>
 

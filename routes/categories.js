@@ -23,7 +23,7 @@ db.open(function(err, db){
 						console.log("the results length after deletingis " +results.length)
 					}
 					else{
-						console.log("oh fuck this")
+						
 					}
 				}));
 			}
