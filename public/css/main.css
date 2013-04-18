@@ -1,4 +1,9 @@
 
+.playbook-header{
+	min-height: 80px;
+	background: #ccc;
+}
+
 .playbook-wrapper{
 	width: 800px;
 	margin: 0 auto;

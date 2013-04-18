@@ -17,23 +17,68 @@
     </head>
     <body>
     	<div class="playbook-wrapper">
-    		<ul class="category-list">
+            <div class="playbook-header">
 
-            </ul>
+            </div>
+            <div id="playbook-contents">
+                <!-- <div class="selector-wrapper">
+                </div>
+                <div class="selected-category-wrapper">
+                </div> -->
+            </div>
+            <!-- <div class="category-list-wrapper">
+                
+            </div> -->
+
+            <!-- <div class="category-item-detail-wrapper">
+                <ul class="category-list-items">
+
+                </ul>
+            </div> -->
     	</div>
 
     	<!--Templates -->
+        <script type="text/x-handlebars-template" id="category-list-contents">
+            <h3>Select a category and test how many you can identify</h3>
+                <ul class="category-list">
+
+                </ul>
+        </script>
+
+        <script type="text/x-handlebars-template" id="category-selector">
+            
+                <select class="select-category">
+                    {{#each categories}}
+                        <option value="{{id}}">{{name}}</option>
+                    {{/each}}
+                </select>
+                <a href="" class="random-selector">Random</a>
+                <a href="" class="toggle-selector">Toggle</a>
+            
+        </script>
+
+        <script type="text/x-handlebars-template" id="category-item-contents">
+            <h5>Showing you: {{name}}</h5>
+            <ul class="category-items">
+                {{#each list}}
+                    <li>{{name}}</li>
+                {{/each}}
+            </ul>
+        </script>
+
     	<script type="text/x-handlebars-template" id="add-category">
             <input class="add-category" placeholder="Enter the category name" type="text"/>
             <a class="cancel-add">Cancel</a>
             <a class="submit-add">Add</a>
     	</script>
+
         <script type="text/x-handlebars-template" id="category-view">
             <a href="#categories/{{_id}}" class="category-names">
                 <img src="img/{{img}}" alt="category"/>
                 <h5>{{name}}</h5>
             </a>
         </script>
+
         <script type="text/x-handlebars-template" id="category-detail">
             <ul>
                 {{#each list}}
